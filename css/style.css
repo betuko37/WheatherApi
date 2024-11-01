@@ -1,0 +1,641 @@
+:root {
+  --Primary-Color: #00adb5;
+  --Secondary-Color: #393e46;
+  --Text-Color: #eeeeee;
+  --Background-Color: #222831;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--Text-Color);
+  text-decoration: none;
+  list-style-type: none;
+  font-family: system-ui;
+}
+
+html {
+  scroll-behavior: smooth; /* Habilita la transición suave al hacer scroll */
+}
+
+body {
+  background-color: var(--Secondary-Color);
+  padding-top: 70px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--Background-Color);
+  padding: 1rem 5rem;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.logo {
+  color: var(--Primary-Color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+
+}
+
+.logo:hover {
+  transform: scale(1.1) rotate(-5deg);
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ancords {
+  display: flex;
+  gap: 2rem;
+  font-size: 16px;
+}
+
+.ancords a {
+  color: var(--Text-Color);
+  font-weight: 500;
+  background-color: var(--Secondary-Color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.4s, transform 0.3s; /* Agrega una transición suave */
+  display: inline-block;
+}
+
+.ancords a:hover {
+  transform: scale(
+    1.05
+  ); /* Aumenta un poco el tamaño del enlace al pasar el mouse */
+  background-color: var(--Primary-Color);
+}
+
+/* Estilo del contenedor (Slide) */
+.slide {
+  position: relative;
+  height: 78vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: url("../img/monte.jpeg") no-repeat center center/cover;
+}
+
+/* Overlay para el fondo blur */
+.overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(3px);
+  z-index: 1;
+}
+
+/* Estilo del contenido */
+.content {
+  position: relative;
+  z-index: 2;
+  padding-top: 10rem;
+}
+
+/* Estilo del título */
+.slide h1 {
+  color: var(--Text-Color);
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 3.5rem;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo del campo de texto */
+.slide input[type="text"] {
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  color: var(--Background-Color);
+  max-width: 1000px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.2rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Efecto en el input al hacer foco */
+.slide input[type="text"]:focus {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+/* Estilo del botón */
+.slide button {
+  padding: 0.8rem 10rem;
+  background-color: var(--Background-Color);
+  border: none;
+  color: var(--Text-Color);
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover en el botón */
+.slide button:hover {
+  background-color: var(--Primary-Color);
+  transform: scale(1.05);
+}
+
+/* BANNER CLIMA YA PUESTO */
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(34, 40, 49, 0.8); /* Fondo oscuro translúcido */
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  color: #eeeeee; /* Color del texto */
+  width: 100%;
+  max-width: 600px; /* Máximo ancho del bloque */
+  margin: -5rem auto; /* Centrado y separación con el contenido */
+}
+
+.weather-info h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #00adb5; /* Color primario */
+}
+
+.weather-info p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.weather-info .temp {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffd369; /* Color cálido para la temperatura */
+  margin: 1rem 0;
+}
+
+.weather-info .condition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.weather-info .condition img {
+  width: 80px;
+  height: 80px;
+  margin-right: 1rem;
+}
+
+.weather-info .details {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria */
+  padding-top: 1rem;
+}
+
+.weather-info .details div {
+  text-align: center;
+}
+
+.weather-info .details div p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.weather-info .details div .label {
+  font-weight: bold;
+  color: #00adb5; /* Color del texto de las etiquetas */
+}
+
+/* Animación suave para la transición de la información */
+.weather-info {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.change-city-btn {
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  background-color: var(--Primary-Color);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-city-btn:hover {
+  background-color: var(--Secondary-Color);
+  transform: scale(1.05);
+}
+
+/* Sección de cartas de ciudades */
+.cities-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1250px;
+  text-align: center;
+}
+
+.cities-container h2 {
+  font-size: 2rem;
+  color: var(--Text-Color);
+}
+
+/* Contenedor de las tarjetas */
+.city-cards {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Ajusta el tamaño mínimo de las tarjetas */
+  gap: 30px;
+}
+
+.cielo{
+    font-weight: 800;
+    text-transform: uppercase;
+    padding-bottom: 1rem;
+}
+
+/* Estilo de la carta del clima */
+.weather-card {
+  width: 280px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 10px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden; /* Esconde cualquier contenido que sobrepase el borde */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s; /* Transición suave */
+}
+
+/* Estilo del frente y el reverso de la carta */
+.weather-card .front,
+.weather-card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Esconde el lado de atrás cuando no se está mostrando */
+  border-radius: 15px; /* Bordes redondeados */
+}
+
+/* Efecto de voltear la tarjeta */
+.weather-card.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.weather-card.flipped .back {
+  transform: rotateY(0deg);
+}
+
+/* Estilo del reverso de la carta */
+.weather-card .back {
+  transform: rotateY(180deg);
+  background: var(--Background-Color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white; /* Color del texto en el reverso */
+  padding: 10px;
+}
+
+/* Estilo del frente de la carta */
+.weather-card .front {
+  background: var(--Background-Color); /* Color de fondo del frente */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #333; /* Color del texto en el frente */
+  transition: 0.3s;
+}
+
+/* Estilo para el título */
+.weather-card h2 {
+  margin: 0px 25px;
+  font-size: 1.5em; /* Tamaño de fuente */
+  color: var(--Primary-Color);
+}
+
+/* Estilo para la temperatura */
+.weather-card .temp {
+  font-size: 2em; /* Tamaño de fuente para la temperatura */
+  font-weight: bold;
+  color: #ffd369;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.weather-card p {
+  margin-bottom: 10px;
+}
+
+/* Estilo para los botones */
+.weather-card button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em; /* Tamaño de fuente */
+  transition: background 0.3s, transform 0.3s;
+}
+
+/* Estilo para el botón de eliminar */
+.weather-card .delete-btn {
+  background: #e94e77; /* Color de fondo del botón de eliminar */
+  color: var(--Background-Color);
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+/* Estilo para el botón de editar */
+.weather-card .edit-btn {
+  background: #ffd700; /* Color de fondo del botón de editar */
+  color: var(--Background-Color);
+}
+
+/* Efecto al pasar el mouse sobre los botones */
+.weather-card button:hover {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.weather-card .delete-btn:hover {
+  background: #d94a65; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+.weather-card .edit-btn:hover {
+  background: #ffc700; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+#abrirModal {
+  text-decoration: none;
+  border: none;
+  color: var(--Text-Color);
+  font-weight: 500;
+  background-color: var(--Secondary-Color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#abrirModal:hover {
+  background-color: var(--Primary-Color);
+  transform: scale(1.05);
+}
+
+.cities-separation {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  cursor: pointer;
+  background-color: var(--Background-Color);
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.cities-separation:hover {
+  transform: scale(1.05);
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+footer {
+  background-color: var(--Background-Color);
+  color: var(--Text-Color);
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px 0; /* Espaciado superior e inferior */
+  width: 100%; /* Abarca todo el ancho */
+  position: relative; /* Posición normal */
+  margin-top: 5rem;
+}
+
+/* Enlaces en el footer */
+footer a {
+  color: var(--Primary-Color);
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+/* Efecto hover en los enlaces */
+footer a:hover {
+  color: #ffd369;
+}
+
+/* Texto en el footer */
+footer p {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+}
+
+/* Estilo para el contenedor principal */
+.main-content {
+  min-height: calc(100vh - 60px); /* Ajusta la altura mínima del contenido */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* MODAL */
+/* Estilos de la modal */
+.modal {
+  display: none; /* Oculta la modal por defecto */
+  position: fixed; /* Queda en una posición fija */
+  z-index: 100; /* Se coloca encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Habilita el desplazamiento si es necesario */
+  background-color: rgba(0, 0, 0, 0.7); /* Color de fondo oscuro con opacidad */
+}
+
+/* Estilos del contenido de la modal */
+.modal-content {
+  background-color: #1c1c1e; /* Color de fondo oscuro */
+  margin: 10% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 450px; /* Ancho máximo para pantallas grandes */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  animation: fadeIn 0.4s; /* Animación de entrada */
+  color: #e0e0e0; /* Color de texto claro */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilo del botón de cerrar */
+.close {
+  color: #e0e0e0; /* Color claro */
+  float: right;
+  font-size: 32px; /* Tamaño de fuente */
+  font-weight: bold;
+  transition: color 0.3s; /* Transición suave para el color */
+}
+
+.close:hover,
+.close:focus {
+  color: #ff6b6b; /* Color rojo suave al pasar el ratón */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilo del input y el botón */
+#newCityInput {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 2px solid #444; /* Borde oscuro */
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #2c2c2e; /* Color de fondo del input */
+  color: #e0e0e0; /* Color de texto claro */
+  font-size: 16px; /* Tamaño de fuente */
+  transition: border 0.3s; /* Transición suave para el borde */
+}
+
+#newCityInput::placeholder {
+  color: #888; /* Color del texto del placeholder */
+}
+
+#newCityInput:focus {
+  border-color: #ff6b6b; /* Cambia el color del borde al enfocar */
+  outline: none; /* Elimina el borde azul predeterminado */
+}
+
+#submitCity {
+  background-color: #ff6b6b; /* Color primario */
+  color: #fff; /* Texto blanco */
+  padding: 12px;
+  border: none;
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px; /* Tamaño de fuente */
+  transition: background-color 0.4s, transform 0.2s; /* Transiciones suaves */
+}
+
+#submitCity:hover {
+  background-color: #ff4d4d; /* Color rojo más oscuro */
+  transform: translateY(-2px); /* Efecto de elevación al pasar el ratón */
+}
+
+#submitCity:active {
+  transform: translateY(1px); /* Efecto de presionar al hacer clic */
+}
+
+/* Ciudad mas caliente */
+.hottest-city-banner {
+  width: 80%;
+  margin: 80px auto;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 127, 80, 0.8),
+    rgba(255, 69, 0, 0.8)
+  );
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-image: url("../img/calor-hermosillo.png"); /* Reemplaza con una URL válida */
+  background-size: cover;
+  background-position: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.hottest-city-content {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Fondo más oscuro para mayor contraste */
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hottest-city-content h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #ffd700; /* Color dorado para resaltar */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Efecto de sombra en el texto */
+}
+
+.hottest-city-content p {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.hottest-city-content img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  border-radius: 50%; /* Hacer que el icono sea redondo */
+  border: 2px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Añadir sombra al icono */
+}

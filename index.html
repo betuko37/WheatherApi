@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Api</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- Navegacion -->
+    <nav class="nav">
+      <div>
+        <h1 class="logo">WEATHER API</h1>
+      </div>
+
+      <div>
+        <ul class="ancords">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#cartas">Ciudades</a></li>
+          <li><a href="#footer">Caliente</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- BANNER -->
+    <section class="slide" id="inicio">
+      <div class="overlay"></div>
+
+      <div class="content">
+        <h1>¡Hola, eres nuevo por aquí! Busca tu ciudad</h1>
+
+        <div>
+          <input type="text" placeholder="Ejemplo: Hermosillo" id="cityInput" />
+        </div>
+        <div>
+          <button id="getWeather">Buscar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Separación atractiva -->
+    <div class="cities-separation" id="cartas">
+      <h2>Ciudades Relevantes</h2>
+      <button id="abrirModal">Agregar Ciudad</button>
+    </div>
+
+    <!-- Contenedor para las tarjetas de clima -->
+    <div class="cities-container">
+      <section id="citiesContainer" class="city-cards"></section>
+    </div>
+
+    <!-- Banner de la ciudad más caliente -->
+    <div class="hottest-city-banner">
+      <div class="hottest-city-content">
+        <h2>Ciudad más caliente</h2>
+        <p id="hottestCityName"></p>
+        <p id="hottestCityTemp"></p>
+        <img id="hottestCityIcon" alt="Icono del clima" />
+      </div>
+    </div>
+
+    <!-- Contenedor de la Modal -->
+    <div id="addCityModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Añadir Ciudad</h2>
+        <input
+          type="text"
+          id="newCityInput"
+          placeholder="Nombre de la ciudad"
+        />
+        <button id="submitCity">Agregar ciudad</button>
+      </div>
+    </div>
+
+    <!-- Modal confirmacion -->
+    <div id="confirmDeleteModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeConfirmModal">&times;</span>
+        <h2>Confirmar Eliminación</h2>
+        <p>¿Estás seguro de que deseas eliminar esta ciudad?</p>
+        <button id="confirmDeleteBtn">Sí, Eliminar</button>
+        <button id="cancelDeleteBtn">No, Cancelar</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <p>&copy; 2024 Jesus Zavala. Todos los derechos reservados.</p>
+      <p>
+        <a target="_blank" href="https://www.linkedin.com/in/betuko35/"
+          >Linkedin</a
+        >
+        <a target="_blank" href="https://wa.link/jzoe4k">WhatsApp</a>
+        <a target="_blank" href="">Correo Electronico</a>
+      </p>
+    </footer>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
